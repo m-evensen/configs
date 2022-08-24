@@ -9,6 +9,3 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " show a few lines of context around the cursor
 set scrolloff=5
-
-" yank/paste to/from system clipboard
-set clipboard^=unnamed,unnamedplus
