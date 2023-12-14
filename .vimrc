@@ -8,4 +8,11 @@ set hlsearch  " highlight matches
 nnoremap <leader><space> :nohlsearch<CR>
 
 " show a few lines of context around the cursor
-set scrolloff=5
+set scrolloff=8
+
+" silence <3
+set belloff=all
+
+" show relative line numbers
+set relativenumber
+set number
