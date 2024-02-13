@@ -16,6 +16,23 @@ vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
+" Intuitive backspace behavior.
+set backspace=indent,eol,start 
+
+" Enabling filetype support provides filetype-specific indenting,
+" syntax highlighting, omni-completion and other useful settings.
+filetype plugin indent on
+syntax on
+
+" Possibility to have more than one unsaved buffers.
+set hidden                     
+
+" Command-line completion, use `<Tab>` to move around and `<CR>` to validate.
+set wildmenu                   
+
+" Minimal automatic indenting for any filetype.
+set autoindent
+
 " put new splits on the right/below
 set splitright
 set splitbelow
