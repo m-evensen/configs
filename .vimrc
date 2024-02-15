@@ -1,6 +1,6 @@
 " Basic Settings
 syntax on		" Enable syntax highlighting
-set number		    " Show line numbers
+set number		" Show line numbers
 set relativenumber	" Show relative line numbers
 set belloff=all		" Silence <3
 set nowrap		" Disable line wrap
@@ -10,7 +10,7 @@ set hidden		" Possibility to have more than one unsaved buffer
 set wildmenu		" Command-line completion, use `<Tab>` to move around and `<cr>` to validate
 set splitright		" Put new vertical splits on the right
 set splitbelow		" Put new horizontal splits below
-set scrolloff=0		" Show a few lines of context around the cursor
+set scrolloff=10	" Show a few lines of context around the cursor
 set laststatus=2	" Always show status line
 set cursorline		" Highlight current line
 set backspace=indent,eol,start		" Intuitive backspace behavior
@@ -35,6 +35,9 @@ map <leader>F <cmd>Files<cr>
 map <leader>l <cmd>Files %:h<cr>
 map <leader>t <cmd>BTags<cr>
 " }
+"nnoremap <C-j> :cnext<cr>     " Ctrl+j to go to next item in quickfix list
+"nnoremap <C-k> :cprev<cr>     " Ctrl+k to go to previous item in quickfix list
+"nnoremap <leader>o :setlocal spell! spelllang=en_us<cr> " Toggle spell check
 
 " Plugins (vim-plug)
 call plug#begin()
