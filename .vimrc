@@ -29,11 +29,13 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 " }
 " fzf mappings {
-map <leader>b <cmd>Buffers<cr>
-map <leader>f <cmd>GFiles<cr>
-map <leader>F <cmd>Files<cr>
-map <leader>l <cmd>Files %:h<cr>
-map <leader>t <cmd>BTags<cr>
+map <leader>f <cmd>GFiles<cr>|	" fuzzy find Git files in the working directory
+map <leader>F <cmd>Files<cr>|	" fuzzy find files in the working directory
+map <leader>b <cmd>Buffers<cr>|	" fuzzy find an open buffer
+"map <leader>l <cmd>Files %:h<cr>
+"map <leader>t <cmd>BTags<cr>
+map <leader>r :Rg | 		" fuzzy find text in the working directory
+vnoremap <leader>r "ry:<c-u>Rg <c-r>r<cr>|	" fuzzy find selected text
 " }
 "nnoremap <C-j> :cnext<cr>     " Ctrl+j to go to next item in quickfix list
 "nnoremap <C-k> :cprev<cr>     " Ctrl+k to go to previous item in quickfix list
