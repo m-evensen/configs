@@ -1,62 +1,53 @@
-" remap escape key
-inoremap jk <esc>
+" Basic Settings
+syntax on		" Enable syntax highlighting
+set number		    " Show line numbers
+set relativenumber	" Show relative line numbers
+set belloff=all		" Silence <3
+set nowrap		" Disable line wrap
+set incsearch		" Incremental search
+set hlsearch		" Highlight search results
+set hidden		" Possibility to have more than one unsaved buffer
+set wildmenu		" Command-line completion, use `<Tab>` to move around and `<cr>` to validate
+set splitright		" Put new vertical splits on the right
+set splitbelow		" Put new horizontal splits below
+set scrolloff=0		" Show a few lines of context around the cursor
+set laststatus=2	" Always show status line
+set cursorline		" Highlight current line
+set backspace=indent,eol,start		" Intuitive backspace behavior
+set statusline=%f\ %h%m%r%=%y\ [%l,%c]	" Custom status line
+filetype plugin indent on		" Enable filetype plugins, indenting, highlighting, omni-completion, etc.
 
-" remap leader key
-let mapleader=" "
-
-" remap window switching
+" Key Mappings
+inoremap jk <esc>	" remap escape key
+let mapleader=" "	" remap leader key
+nnoremap <leader><space> :nohlsearch<cr>			" Remove search highlight
+nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<cr>	" Source vim config and install plugins
+" remap window switch {
 nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
+" }
+" fzf mappings {
+map <leader>b <cmd>Buffers<cr>
+map <leader>f <cmd>GFiles<cr>
+map <leader>F <cmd>Files<cr>
+map <leader>l <cmd>Files %:h<cr>
+map <leader>t <cmd>BTags<cr>
+" }
 
-" yank/paste from/to system clipboard
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>p "+p
-vnoremap <leader>p "+p
+" Plugins (vim-plug)
+call plug#begin()
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy file finder
+  Plug 'junegunn/fzf.vim' 		" Also necessary for fzf in vim
+  Plug 'gruvbox-community/gruvbox'	" Gruvbox color schemes
+  Plug 'tpope/vim-fugitive'		" Git integration
+call plug#end()
 
-" Intuitive backspace behavior.
-set backspace=indent,eol,start 
+" Color Scheme
+set bg=dark		" Set dark background
+colorscheme gruvbox 	" Set color scheme to gruvbox, after plugin installation
 
-" Enabling filetype support provides filetype-specific indenting,
-" syntax highlighting, omni-completion and other useful settings.
-filetype plugin indent on
-syntax on
-
-" Possibility to have more than one unsaved buffers.
-set hidden                     
-
-" Command-line completion, use `<Tab>` to move around and `<CR>` to validate.
-set wildmenu                   
-
-" Minimal automatic indenting for any filetype.
-set autoindent
-
-" put new splits on the right/below
-set splitright
-set splitbelow
-
-" silence <3
-set belloff=all
-
-" search as characters are entered; highlight matches
-set incsearch
-set hlsearch
-
-" remove search highlight
-nnoremap <leader><space> :nohlsearch<CR>
-
-" show a few lines of context around the cursor
-set scrolloff=8
-
-" show relative line numbers
-set relativenumber
-set number
-
-" status line
-set laststatus=2
-set statusline=%f\ %h%m%r%=%y\ [%l,%c]
-
-" color scheme
-colo desert
+" netrw settings
+let g:netrw_banner=0	" Disable annoying banner
+let g:netrw_liststyle=3	" Enable tree view
