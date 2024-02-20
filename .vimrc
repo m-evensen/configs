@@ -22,6 +22,8 @@ set cursorline		" Highlight current line
 "set expandtab		" Converts tabs to spaces
 "set shiftwidth=4	" Number of spaces to use for each step of (auto)indent
 "set smartindent	" Makes indenting smart
+set encoding=utf-8	" coc.nvim calculates byte offset by count utf-8 byte sequence
+
 set backspace=indent,eol,start		" Intuitive backspace behavior
 set statusline=%f\ %h%m%r%=%y\ [%l,%c]	" Custom status line
 filetype plugin indent on		" Enable filetype plugins, indenting, highlighting, omni-completion, etc.
@@ -31,12 +33,14 @@ inoremap jk <esc>|	" remap escape key
 let mapleader=" "|	" remap leader key
 nnoremap <leader><space> :nohlsearch<cr>|			" Remove search highlight
 nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<cr>|" Source vim config and install plugins
+"
 " remap window switch {
 nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 " }
+"
 " fzf mappings {
 map <leader>f <cmd>GFiles<cr>|	" fuzzy find Git files in the working directory
 map <leader>F <cmd>Files<cr>|	" fuzzy find files in the working directory
@@ -48,6 +52,29 @@ map <leader>r :Rg
 " fuzzy find selected text (requires ripgrep):
 vnoremap <leader>r "ry:<c-u>Rg <c-r>r<cr>
 " }
+"
+" coc mappings {
+inoremap <silent><expr> <c-j>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<c-j>" :
+      \ coc#refresh()
+inoremap <expr><c-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>""
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>""
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" }
 
 " Plugins (vim-plug)
 call plug#begin()
@@ -55,9 +82,8 @@ call plug#begin()
   Plug 'junegunn/fzf.vim' 		" Also necessary for fzf in vim
   Plug 'gruvbox-community/gruvbox'	" Gruvbox color schemes
   Plug 'tpope/vim-fugitive'		" Git integration
-  " consider:
-  " vim-visual-multi
-  " coc
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}	" Multiple cursors
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}	" Conqueror of Completion
 call plug#end()
 
 " Color Scheme
