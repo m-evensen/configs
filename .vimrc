@@ -21,7 +21,7 @@ set cursorline		" Highlight current line
 set mouse=a		" Enable mouse support
 set backspace=indent,eol,start		" Intuitive backspace behavior
 set statusline=%f\ %h%m%r%=%y\ [%l,%c]	" Custom status line
-filetype plugin on		" Enable filetype plugins, indenting, highlighting, omni-completion, etc.
+filetype plugin indent on		" Enable filetype plugins, indenting, highlighting, omni-completion, etc.
 
 "consider tab and indentation settings:
 "set tabstop=4		" Number of spaces tabs count for
