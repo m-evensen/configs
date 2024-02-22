@@ -12,7 +12,7 @@
     git clone https://github.com/m-evensen/dotfiles.git
     ```
     
-2. **Symlink `.vimrc`**: Create a symlink to the `.vimrc` file in this repository.
+2. **Symlink `.vimrc`**: Create a symlink to the `.vimrc` file in this repository. Remember to back up your existing `.vimrc` file if you already have one.
    
     ```bash
     ln -s /path/to/dotfiles/.vimrc ~/.vimrc
