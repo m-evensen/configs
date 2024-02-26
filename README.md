@@ -31,4 +31,4 @@
     - **ripgrep**: For efficient text search (installation varies by system).
     - **ctags**: For generating tags allowing navigation to symbols across the source code (installation varies by system).
 
-6. **Install CoC extensions**: Install [CoC](https://github.com/neoclide/coc.nvim) extensions relevant to the programming languages you're planning to work with, e.g. `:CocInstall coc-python` for Python, `:CocInstall coc-java` for Java, etc. 
+6. **Install CoC extensions**: Install [CoC](https://github.com/neoclide/coc.nvim) extensions relevant to the programming languages you're planning to work with, e.g. `:CocInstall coc-pyright` for Python, `:CocInstall coc-java` for Java, etc. 
