@@ -23,6 +23,9 @@ set expandtab       " Insert spaces instead of tabs
 set tabstop=4       " Display tabs with the width of 4 spaces
 set softtabstop=4   " Insert 4 spaces when pressing `<Tab>`
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
+set undofile        " Enable undo files
+set undodir=~/.vim/tmp//    " Undo files to common location
+set dir=~/.vim/tmp//        " Swap files to common location 
 set backspace=indent,eol,start          " Intuitive backspace behavior
 set statusline=%f\ %h%m%r%=%y\ [%l,%c]  " Custom status line
 filetype plugin indent on               " Enable filetype plugins, indenting, highlighting, omni-completion, etc.
@@ -48,13 +51,16 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
+" Toggle the file explorer (netrw)
+nnoremap <Leader>e :Lex<CR>
+
 " FZF mappings
 " ------------
 map <leader>f <cmd>GFiles<cr>|  " find Git files in the working directory
 map <leader>F <cmd>Files<cr>|   " find files in the working directory
 map <leader>b <cmd>Buffers<cr>| " find an open buffer
 map <leader>t <cmd>BTags<cr>|   " find tags in current buffer (requires ctags)
-map <leader>rg :Rg|             " find text in working directory (requires ripgrep):
+map <leader>rg :Rg |            " find text in working directory (requires ripgrep):
 vnoremap <leader>r "ry:<c-u>Rg <c-r>r<cr>|  " find selected text (requires ripgrep):
 " consider: map <leader>l <cmd>Files %:h<cr> " find files in current folder
 
@@ -100,12 +106,15 @@ call plug#end()
 
 " Plugin settings
 " ---------------
-let g:netrw_banner=0    " Disable annoying banner
-let g:netrw_liststyle=3 " Enable tree view
-set encoding=utf-8      " coc.nvim calculates byte offset by count utf-8 byte sequence
+let g:netrw_banner=0        " Disable annoying banner
+let g:netrw_winsize=25      " Set the initial width of the netrw window
+let g:netrw_liststyle=3     " Enable tree view
+let g:netrw_browse_split=4  " Open file in window that was active before calling :Lex
+set encoding=utf-8          " CoC.nvim calculates byte offset by count utf-8 byte sequence
 
 " =====
 " Theme
 " =====
 set bg=dark         " Set dark background
+set termguicolors   " Gives Vim access to a broader range of colours
 colorscheme gruvbox " Set color scheme to gruvbox (requires gruvbox plugin)
