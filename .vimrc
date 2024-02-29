@@ -10,8 +10,8 @@ set incsearch       " Incremental search
 set hlsearch        " Highlight search results
 set ignorecase      " Search case-insensitive
 set smartcase       " Search case sensitive if any upper case letters
-set hidden          " Possibility to have more than one unsaved buffer
-set wildmenu|       " Command-line completion, use `<Tab>` to move around and `<cr>` to validate
+set hidden          " Allow more than one unsaved buffer
+set wildmenu        " Command-line completion, use `<Tab>` to move around and `<CR>` to validate
 set splitright      " Put new vertical splits on the right
 set splitbelow      " Put new horizontal splits below
 set scrolloff=10    " Show a few lines of context around the cursor
@@ -36,8 +36,11 @@ filetype plugin indent on               " Enable filetype plugins, indenting, hi
 
 " General mappings
 " ----------------
-inoremap jk <esc>|  " Remap escape key
-let mapleader=" "|  " Remap leader key
+" Remap escape key
+inoremap jk <esc>
+
+" Remap leader key
+let mapleader=" "
 
 " Remove search highlight
 nnoremap <silent><leader><space> :nohlsearch<cr>    
