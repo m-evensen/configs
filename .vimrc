@@ -15,7 +15,6 @@ set wildmenu        " Command-line completion, use `<Tab>` to move around and `<
 set splitright      " Put new vertical splits on the right
 set splitbelow      " Put new horizontal splits below
 set scrolloff=10    " Show a few lines of context around the cursor
-set laststatus=2    " Always show status line
 set tags=tags;/     " Look for tags file in ancestor directory
 set cursorline      " Highlight current line
 set mouse=a         " Enable mouse support
@@ -24,11 +23,10 @@ set tabstop=4       " Display tabs with the width of 4 spaces
 set softtabstop=4   " Insert 4 spaces when pressing `<Tab>`
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set undofile        " Enable undo files
-set undodir=~/.vim/tmp//    " Undo files to common location
-set dir=~/.vim/tmp//        " Swap files to common location 
-set backspace=indent,eol,start          " Intuitive backspace behavior
-set statusline=%f\ %h%m%r%=%y\ [%l,%c]  " Custom status line
-filetype plugin indent on               " Enable filetype plugins, indenting, highlighting, omni-completion, etc.
+set undodir=~/.vim/tmp//        " Undo files to common location
+set dir=~/.vim/tmp//            " Swap files to common location 
+set backspace=indent,eol,start  " Intuitive backspace behavior
+filetype plugin indent on       " Enable filetype plugins, indenting, highlighting, omni-completion, etc.
 
 " ============
 " Key Mappings
@@ -121,3 +119,14 @@ set encoding=utf-8          " CoC.nvim calculates byte offset by count utf-8 byt
 set bg=dark         " Set dark background
 set termguicolors   " Gives Vim access to a broader range of colours
 colorscheme gruvbox " Set color scheme to gruvbox (requires gruvbox plugin)
+
+" ===========
+" Status line
+" ===========
+set laststatus=2            " Always show status line
+set statusline=%f           " File name
+set statusline+=\ %m        " Modified flag
+set statusline+=\ %h%w%r    " Additional flags: Help, Preview, Readonly
+set statusline+=%=          " Right align
+set statusline+=%y          " File type
+set statusline+=\ %l:%c     " Line and column number
