@@ -23,10 +23,10 @@ set tabstop=4       " Display tabs with the width of 4 spaces
 set softtabstop=4   " Insert 4 spaces when pressing `<Tab>`
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set undofile        " Enable undo files
-set undodir=~/.vim/tmp//    " Undo files to common location
-set dir=~/.vim/tmp//        " Swap files to common location 
-set backspace=indent,eol,start          " Intuitive backspace behavior
-filetype plugin indent on               " Enable filetype plugins, indenting, highlighting, omni-completion, etc.
+set undodir=~/.vim/tmp//        " Undo files to common location
+set dir=~/.vim/tmp//            " Swap files to common location 
+set backspace=indent,eol,start  " Intuitive backspace behavior
+filetype plugin indent on       " Enable filetype plugins, indenting, highlighting, omni-completion, etc.
 
 " ============
 " Key Mappings
@@ -52,8 +52,8 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
-" Toggle the file explorer (netrw)
-nnoremap <Leader>e :Lex<CR>
+" Toggle the file explorer
+nnoremap <Leader>e :NERDTreeToggle<CR>
 
 " FZF mappings
 " ------------
@@ -104,6 +104,7 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}       " Conqueror of Completion
   Plug 'gruvbox-community/gruvbox'                      " Gruvbox color schemes
   Plug 'vim-airline/vim-airline'                        " Airline statusline
+  Plug 'preservim/nerdtree'                             " NERDTree file explorer
 call plug#end()
 
 " Plugin settings
